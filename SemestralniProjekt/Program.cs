@@ -87,6 +87,9 @@ namespace SemestralniProjekt
             }
             
 
+            //lol
+            //wdawd
+
                 if (a < 0 ^ a >= 50)
                 {
                     Console.WriteLine("Zadejte platné číslo.");
