@@ -42,19 +42,19 @@ namespace SemestralniProjekt
             using (StreamWriter sw = new StreamWriter(@"C:\Users\matej\source\repos\Projekt\Projekt\data.txt", true))
             {
                 sw.WriteLine("Vylosované čísla jsou: {0} {1} {2} {3} {4} {5}", x, y, z, v, w, s);
-                //sw.Flush();
+                
             }
 
 
             //Vypsaní náhodných čísel pro kontrolu
-            
+            /*
             Console.WriteLine(x);
             Console.WriteLine(y);
             Console.WriteLine(z);
             Console.WriteLine(v);
             Console.WriteLine(w);
             Console.WriteLine(s);
-            
+            */
 
             Console.WriteLine("---------------------------");
             Console.WriteLine("         LOTERIE           ");
