@@ -8,9 +8,13 @@ namespace SemestralniProjekt
     {
         static void Main(string[] args)
         {
+            bool playAgain = true;
+
+            while (playAgain == true) 
+            { 
             Menu();
-            int[] poleInput = userInput();
             int[] poleRandom = nahodnaCisla();
+            int[] poleInput = userInput();
             WriteAll(poleInput, "Vaše vybraná čísla jsou: ");
             Console.WriteLine();
             WriteAll(poleRandom, "Vylosovaná čísla jsou: ");
@@ -18,8 +22,8 @@ namespace SemestralniProjekt
             Console.WriteLine();
             Console.WriteLine("----------------------------------------");
             vypsatVysledky(shoda);
-            Console.ReadLine();
-
+            playAgain = hratZnova();
+            }
         }
 
         private static void Menu()
@@ -120,6 +124,52 @@ namespace SemestralniProjekt
         {
             Console.WriteLine($"Váš počet shodných čísel je: {pocetShod}");
 
+            if (pocetShod == 6)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Vyhrál jsi JACKPOT!!!");
+            }
+            else if (pocetShod >= 4)
+            {
+                Console.ForegroundColor= ConsoleColor.Green;
+                Console.WriteLine("Vyhrál jsi.");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Nevyhrál jsi, zkus to znova");
+            }
+        }
+
+        private static bool hratZnova()
+        {
+            bool playAgain;  
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Chcete hrát znovu? y/n");
+                string input = Console.ReadLine();
+
+                if (input == "y")
+                {
+                    playAgain = true;
+                    break;
+                }
+                else if (input == "n")
+                {
+                    playAgain = false;
+                    break;
+                }
+                else 
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Zadejte platný symbol.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            }
+            Console.Clear();
+            return playAgain;
+            
         }
     }
 }
