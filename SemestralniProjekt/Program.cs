@@ -14,6 +14,7 @@ namespace SemestralniProjekt
         private static void Menu()
         {
             Console.WriteLine("-------------------------");
+            Console.WriteLine("lol");
 
         }
     }
