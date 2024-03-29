@@ -40,7 +40,7 @@ namespace SemestralniProjekt
 
         //}
 
-        private static int userInput(string input, int x) 
+        private static int[] userInput(string input, int x) 
         {
             int[] poleInput = new int[6];
             
@@ -67,7 +67,7 @@ namespace SemestralniProjekt
         }
     }
 }
-                        
+/*askdfjlasdf*/                        
                     
                 
 
