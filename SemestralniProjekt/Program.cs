@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Xml;
 
 namespace SemestralniProjekt
 {
@@ -11,7 +12,12 @@ namespace SemestralniProjekt
             int[] poleInput = userInput();
             int[] poleRandom = nahodnaCisla();
             WriteAll(poleInput, "Vaše vybraná čísla jsou: ");
+            Console.WriteLine();
             WriteAll(poleRandom, "Vylosovaná čísla jsou: ");
+            int shoda = shodnaCisla(poleInput, poleRandom);
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------------");
+            vypsatVysledky(shoda);
             Console.ReadLine();
 
         }
@@ -97,17 +103,22 @@ namespace SemestralniProjekt
             
         }
 
-        private static void shodnaCisla(int[] poleInput, int[] poleRandom)
+        private static int shodnaCisla(int[] poleInput, int[] poleRandom)
         {
+            int shoda = 0;
             for (int i = 0; i < poleInput.Length; i++)
             {
-
-                
-
-
+                if (poleInput[i] == poleRandom[i])
+                {
+                    shoda++;
+                }
             }
+            return shoda;
+        }
 
-
+        private static void vypsatVysledky(int pocetShod)
+        {
+            Console.WriteLine($"Váš počet shodných čísel je: {pocetShod}");
 
         }
     }
