@@ -8,21 +8,25 @@ namespace SemestralniProjekt
     {
         static void Main(string[] args)
         {
+
+
+
             bool playAgain = true;
 
-            while (playAgain == true) 
-            { 
-            Menu();
-            int[] poleRandom = nahodnaCisla();
-            int[] poleInput = userInput();
-            WriteAll(poleInput, "Vaše vybraná čísla jsou: ");
-            Console.WriteLine();
-            WriteAll(poleRandom, "Vylosovaná čísla jsou: ");
-            int shoda = shodnaCisla(poleInput, poleRandom);
-            Console.WriteLine();
-            Console.WriteLine("----------------------------------------");
-            vypsatVysledky(shoda);
-            playAgain = hratZnova();
+            while (playAgain == true)
+            {
+                Menu();
+                int[] poleRandom = nahodnaCisla();
+                int[] poleInput = userInput();
+                WriteAll(poleInput, "Vaše vybraná čísla jsou: ");
+                Console.WriteLine();
+                WriteAll(poleRandom, "Vylosovaná čísla jsou: ");
+                int shoda = shodnaCisla(poleInput, poleRandom);
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------");
+                vypsatVysledky(shoda);
+                playAgain = hratZnova();
+                ulozeniSoubor(poleRandom);
             }
         }
 
@@ -93,7 +97,7 @@ namespace SemestralniProjekt
             }
             Console.Clear();
             return poleInput;
-            
+
         }
 
         private static void WriteAll(int[] pole, string message)
@@ -104,7 +108,7 @@ namespace SemestralniProjekt
                 Console.Write($"{pole[i]} ");
 
             }
-            
+
         }
 
         private static int shodnaCisla(int[] poleInput, int[] poleRandom)
@@ -131,7 +135,7 @@ namespace SemestralniProjekt
             }
             else if (pocetShod >= 4)
             {
-                Console.ForegroundColor= ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Vyhrál jsi.");
             }
             else
@@ -143,7 +147,7 @@ namespace SemestralniProjekt
 
         private static bool hratZnova()
         {
-            bool playAgain;  
+            bool playAgain;
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.White;
@@ -160,7 +164,7 @@ namespace SemestralniProjekt
                     playAgain = false;
                     break;
                 }
-                else 
+                else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Zadejte platný symbol.");
@@ -169,7 +173,21 @@ namespace SemestralniProjekt
             }
             Console.Clear();
             return playAgain;
-            
+        }
+
+        private static void ulozeniSoubor(int[] poleRandom)
+        {
+            using (StreamWriter sw = new StreamWriter(@"C:\Users\matej\source\repos\Semestralni-Projekt\data.txt", true))
+            {
+                sw.Write("Vylosovaná čísla jsou: ");
+
+                for (int i = 0; i < poleRandom.Length; i++)
+                {
+                    sw.Write($"{poleRandom[i]} ");
+                }
+
+                sw.WriteLine("");
+            }
         }
     }
 }
