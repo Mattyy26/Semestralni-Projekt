@@ -25,8 +25,10 @@ namespace SemestralniProjekt
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------");
                 vypsatVysledky(shoda);
-                playAgain = hratZnova();
+                Console.WriteLine("----------------------------------------\n");
                 ulozeniSoubor(poleRandom);
+                playAgain = hratZnova();
+                
             }
         }
 
@@ -136,12 +138,13 @@ namespace SemestralniProjekt
             else if (pocetShod >= 4)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Vyhrál jsi.");
+                Console.WriteLine("Vyhrál jsi!");
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Nevyhrál jsi, zkus to znova");
+                Console.WriteLine("Nevyhrál jsi, zkus to znova!");
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
 
@@ -177,7 +180,7 @@ namespace SemestralniProjekt
 
         private static void ulozeniSoubor(int[] poleRandom)
         {
-            using (StreamWriter sw = new StreamWriter(@"C:\Users\matej\source\repos\Semestralni-Projekt\data.txt", true))
+            using (StreamWriter sw = new StreamWriter(@"loterie.txt", true))
             {
                 sw.Write("Vylosovaná čísla jsou: ");
 
