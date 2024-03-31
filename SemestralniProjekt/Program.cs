@@ -134,17 +134,19 @@ namespace SemestralniProjekt
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Vyhrál jsi JACKPOT!!!");
+                Console.ResetColor();
             }
             else if (pocetShod >= 4)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Vyhrál jsi!");
+                Console.ResetColor();
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Nevyhrál jsi, zkus to znova!");
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ResetColor();
             }
         }
 
