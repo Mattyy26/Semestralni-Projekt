@@ -7,10 +7,7 @@ namespace SemestralniProjekt
     internal class Program
     {
         static void Main(string[] args)
-        {
-
-
-
+        {  
             bool playAgain = true;
 
             while (playAgain == true)
@@ -28,7 +25,6 @@ namespace SemestralniProjekt
                 Console.WriteLine("----------------------------------------\n");
                 ulozeniSoubor(poleRandom);
                 playAgain = hratZnova();
-                
             }
         }
 
