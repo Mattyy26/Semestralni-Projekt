@@ -11,9 +11,9 @@ namespace SemestralniProjekt
         {  
             bool playAgain = true;
 
-            while (playAgain == true)
+            while (playAgain == true) //bool, while ke konci rozhoduje, zda uzivatel chce loterii spustit znova nebo ne
             {
-                Menu();
+                Menu();//Menu loterie
                 int[] poleRandom = nahodnaCisla();
                 int[] poleInput = userInput();
                 WriteAll(poleInput, "Vaše vybraná čísla jsou: ");
@@ -40,7 +40,7 @@ namespace SemestralniProjekt
             Console.WriteLine("Stiskněte enter pro start");
             Console.ForegroundColor = ConsoleColor.White;
 
-            while (true)
+            while (true) //opatreni pro zmacknuti enteru pro pokracovani, popripade vypsani zadani spatneho symbolu a opakovani
             {
                 ConsoleKeyInfo klavesa = Console.ReadKey();
 
