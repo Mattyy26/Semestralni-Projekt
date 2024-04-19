@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Xml;
 
@@ -38,8 +39,23 @@ namespace SemestralniProjekt
             Console.WriteLine("---------------------------");
             Console.WriteLine("Stiskněte enter pro start");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey();
 
+            while (true)
+            {
+                ConsoleKeyInfo klavesa = Console.ReadKey();
+
+                if (klavesa.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Zadejte platný symbol.");
+                    Console.ResetColor;
+                }
+            }
+            Console.Clear();
         }
 
         private static int[] nahodnaCisla()
