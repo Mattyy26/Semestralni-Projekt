@@ -51,8 +51,8 @@ namespace SemestralniProjekt
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Zadejte platný symbol.");
-                    Console.ResetColor;
+                    Console.WriteLine("\nZadejte platný symbol.");
+                    Console.ResetColor();
                 }
             }
             Console.Clear();
