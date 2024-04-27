@@ -11,21 +11,21 @@ namespace SemestralniProjekt
         {  
             bool playAgain = true;
 
-            while (playAgain == true) //bool, while ke konci rozhoduje, zda uzivatel chce loterii spustit znova nebo ne
+            while (playAgain == true) // bool, while ke konci rozhoduje, zda uživatel chce loterii spustit znova nebo ne
             {
-                Menu();//Menu loterie
-                int[] poleRandom = nahodnaCisla();
-                int[] poleInput = userInput();
-                WriteAll(poleInput, "Vaše vybraná čísla jsou: ");
+                Menu();// Menu loterie
+                int[] poleRandom = nahodnaCisla();// načtení náhodných čísel
+                int[] poleInput = userInput();// userInput čísel
+                WriteAll(poleInput, "Vaše vybraná čísla jsou: ");// vypíše uživatelem zadaná čísla
                 Console.WriteLine();
-                WriteAll(poleRandom, "Vylosovaná čísla jsou: ");
-                int shoda = shodnaCisla(poleInput, poleRandom);
+                WriteAll(poleRandom, "Vylosovaná čísla jsou: ");// vypíše náhodně vygenerovaná čísla
+                int shoda = shodnaCisla(poleInput, poleRandom);// zjistí, kolik čísel je shodných
                 Console.WriteLine();
                 Console.WriteLine("----------------------------------------");
-                vypsatVysledky(shoda);
+                vypsatVysledky(shoda);// vypíše počet shod
                 Console.WriteLine("----------------------------------------\n");
-                ulozeniSoubor(poleRandom);
-                playAgain = hratZnova();
+                ulozeniSoubor(poleRandom);// uloží data do souborů
+                playAgain = hratZnova();// zeptá se uživatele, zda chce hrát znovu nebo ukončit program
             }
         }
 
@@ -56,9 +56,9 @@ namespace SemestralniProjekt
                 }
             }
             Console.Clear();
-        }
+        } // Menu loterie
 
-        private static int[] nahodnaCisla()
+        private static int[] nahodnaCisla() //Vygeneruje náhodná čísla a uloží jej do pole
         {
             int[] poleRandom = new int[6];
 
@@ -67,7 +67,7 @@ namespace SemestralniProjekt
             for (int i = 0; i < poleRandom.Length; i++)
             {
 
-                while (true)
+                while (true)// ošetří, aby se čísla neopakovala
                 {
                     int cislo = random.Next(1, 49);
 
@@ -78,12 +78,12 @@ namespace SemestralniProjekt
                     }
                 }
             }
-            return poleRandom;
+            return poleRandom;// vrátí pole nahodných čísel
         }
 
-        private static int[] userInput()
+        private static int[] userInput() // uživatelem zadaná čísla
         {
-            int[] poleInput = new int[6];
+            int[] poleInput = new int[6];// vytvoří pole o 6 int
             string input;
             int x;
 
@@ -91,7 +91,7 @@ namespace SemestralniProjekt
 
             for (int i = 0; i < poleInput.Length; i++)
             {
-                while (true)
+                while (true)// ošetří, aby čísla byla zadaná v podmínkách, což je rozmezí 1-49, jinak to vypíše chybu
                 {
                     input = Console.ReadLine();
                     if (int.TryParse(input, out x))
@@ -114,7 +114,7 @@ namespace SemestralniProjekt
 
         }
 
-        private static void WriteAll(int[] pole, string message)
+        private static void WriteAll(int[] pole, string message)// vypíše náhodně vygenerovaná čísla a uživatelem zadaná čísla
         {
             Console.Write(message);
             for (int i = 0; i < pole.Length; i++)
@@ -125,7 +125,7 @@ namespace SemestralniProjekt
 
         }
 
-        private static int shodnaCisla(int[] poleInput, int[] poleRandom)
+        private static int shodnaCisla(int[] poleInput, int[] poleRandom)// zjistí počet shodných čísel
         {
             int shoda = 0;
             for (int i = 0; i < poleInput.Length; i++)
@@ -138,7 +138,7 @@ namespace SemestralniProjekt
             return shoda;
         }
 
-        private static void vypsatVysledky(int pocetShod)
+        private static void vypsatVysledky(int pocetShod)// vypíše počet shod a zajistí vypsání informace o výhře či prohře na základě shod
         {
             Console.WriteLine($"Váš počet shodných čísel je: {pocetShod}");
 
@@ -162,7 +162,7 @@ namespace SemestralniProjekt
             }
         }
 
-        private static bool hratZnova()
+        private static bool hratZnova()// na základě inputu uživatele spustí hru znova nebo ji ukončí, také ošetřuje, aby nebyl zadán špatná symbol
         {
             bool playAgain;
             while (true)
@@ -192,7 +192,7 @@ namespace SemestralniProjekt
             return playAgain;
         }
 
-        private static void ulozeniSoubor(int[] poleRandom)
+        private static void ulozeniSoubor(int[] poleRandom)// ukládá vylosovaná čísla do textového souboru, možnost si zobrazit historii výherních čísel
         {
             using (StreamWriter sw = new StreamWriter(@"loterie.txt", true))
             {
